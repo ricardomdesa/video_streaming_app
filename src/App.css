@@ -24,6 +24,13 @@
   color: white;
 }
 
+.App-new {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  color: white;
+}
+
 .App-link {
   color: #61dafb;
 }
