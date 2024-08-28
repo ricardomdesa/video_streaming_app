@@ -11,7 +11,7 @@ type Classes = {
 
 export class VideoController {
   public static async getClasses() {
-    const request = new Request("http://localhost:8080/classes", {
+    const request = new Request("http://localhost:8081/classes", {
       method: "GET",
       headers: { "X-API-Key": "SeCrEt" },
     });

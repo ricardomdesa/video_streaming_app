@@ -14,7 +14,7 @@ export default function Main() {
   return (
     <Space direction="vertical">
       <Title style={{ color: "white" }}>Golang videos</Title>
-      <VideoPlayer video={51} />
+      <VideoPlayer videoUrl={"mod4/13-Template"} />
     </Space>
   );
 }

@@ -3,12 +3,11 @@ import { useRef } from "react";
 import ReactHlsPlayer from "react-hls-player";
 
 type VideoProps = {
-  video: number | undefined;
+  videoUrl: string | undefined;
 }
-export default function VideoPlayer({video}: VideoProps) {
+export default function VideoPlayer({videoUrl}: VideoProps) {
   const playerRef = useRef(null);
-  console.log(video);
-  const source = `http://localhost:8080/media/${video}/stream`
+  const source = `http://localhost:8081/media/${videoUrl}/stream`
   return (
     <div>
       <Space direction="horizontal">
