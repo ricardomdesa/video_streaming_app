@@ -13,7 +13,7 @@ export default function Main() {
 
   return (
     <Space direction="vertical">
-      <Title style={{ color: "white" }}>Go Expert</Title>
+      <Title style={{ color: "white" }}>Golang videos</Title>
       <VideoPlayer video={51} />
     </Space>
   );

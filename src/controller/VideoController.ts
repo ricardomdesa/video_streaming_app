@@ -13,7 +13,7 @@ export class VideoController {
   public static async getClasses() {
     const request = new Request("http://localhost:8080/classes", {
       method: "GET",
-      headers: { "X-API-Key": "SeCrEt824" },
+      headers: { "X-API-Key": "SeCrEt" },
     });
     const response = await api(request);
     if (response.status === 200) {
