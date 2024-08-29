@@ -1,14 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Main from './components/Main';
+import "./App.css";
+import Main from "./components/Main";
+import { VideoProvider } from "./providers/VideoProvider";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-new">
-        <Main />
-      </header>
+      <VideoProvider>
+        <header className="App-new">
+          <Main />
+        </header>
+      </VideoProvider>
     </div>
   );
 }
