@@ -4,10 +4,10 @@ import ReactHlsPlayer from "react-hls-player";
 
 type VideoProps = {
   videoUrl: string | undefined;
-}
-export default function VideoPlayer({videoUrl}: VideoProps) {
+};
+export default function VideoPlayer({ videoUrl }: VideoProps) {
   const playerRef = useRef(null);
-  const source = `http://localhost:8081/media/${videoUrl}/stream`
+  const source = `${process.env.REACT_APP_API_VIDEO_URL}/media/${videoUrl}/stream`;
   return (
     <div>
       <Space direction="horizontal">
@@ -16,12 +16,18 @@ export default function VideoPlayer({videoUrl}: VideoProps) {
           src={source}
           autoPlay={false}
           controls={true}
-          width="70%"
+          width="90%"
           height="auto"
           hlsConfig={{
             maxLoadingDelay: 4,
             minAutoBitrate: 0,
             lowLatencyMode: true,
+            xhrSetup: (xhr: any) => {
+              xhr.setRequestHeader(
+                "X-API-Key",
+                `${process.env.REACT_APP_API_KEY}`
+              );
+            },
           }}
         />
       </Space>

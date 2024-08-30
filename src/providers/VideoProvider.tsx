@@ -1,9 +1,11 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { ModulosData } from "../types";
 import { VideoController } from "../controller/VideoController";
+import { ModulosData } from "../types";
 
 type VideoContextType = {
   modulos: ModulosData;
+  selectedVideo: string;
+  setSelectedVideo: (video: string) => void;
   setModulos: (data: any) => void;
   getVideos: () => void;
 };
@@ -14,14 +16,17 @@ export function VideoProvider(props: { children: ReactNode }) {
   const [modulos, setModulos] = useState<ModulosData>({
     modulos: [],
   });
+  const [selectedVideo, setSelectedVideo] = useState<string>("");
 
   async function getVideos() {
     const data = await VideoController.getClasses();
     setModulos({ modulos: data.modulos });
   }
-  
-  const providerValue:VideoContextType = {
+
+  const providerValue: VideoContextType = {
     modulos,
+    selectedVideo,
+    setSelectedVideo,
     setModulos,
     getVideos,
   };
