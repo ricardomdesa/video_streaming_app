@@ -1,12 +1,12 @@
 import { Space, Typography } from "antd";
 import { useEffect } from "react";
 import { useVideo } from "../../providers/VideoProvider";
-import VideoList from "../VideoList";
+import MenuComp from "../MenuComp";
 import VideoPlayer from "../VideoPlayer";
 
 export default function Main() {
   const { Title } = Typography;
-  const { modulos, getVideos, selectedVideo } = useVideo();
+  const { getVideos, selectedVideo } = useVideo();
 
   useEffect(() => {
     getVideos();
@@ -14,7 +14,9 @@ export default function Main() {
 
   return (
     <Space direction="horizontal">
-      <VideoList modulos={modulos} />
+      <Space direction="vertical">
+        <MenuComp />
+      </Space>
       <Space direction="vertical">
         <Title style={{ color: "white" }} level={1}>
           Golang videos

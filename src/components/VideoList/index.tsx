@@ -5,9 +5,10 @@ import { Modulo, ModulosData } from "../../types";
 
 type VideoListProps = {
   modulos: ModulosData;
+  hide: boolean; // Hide video player when true
 };
 
-export default function VideoList({ modulos }: VideoListProps) {
+export default function VideoList({ modulos, hide }: VideoListProps) {
   const { setSelectedVideo } = useVideo();
   const tData: TreeDataNode[] = modulos.modulos.map((mod: Modulo) => ({
     title: mod.name,
@@ -27,15 +28,14 @@ export default function VideoList({ modulos }: VideoListProps) {
 
   return (
     <div >
-      <h3>Select a video:</h3>
-      <Tree
+      {!hide && <Tree
         style={{minWidth: 300}}
         showLine
         showIcon
         defaultExpandedKeys={["0-1-0-0"]}
         onSelect={onSelect}
         treeData={tData}
-      />
+      />}
     </div>
   );
 }
