@@ -1,16 +1,29 @@
+import { ConfigProvider } from "antd";
 import "./App.css";
-import Main from "./components/Main";
+import LayoutC from "./components/LayoutC";
 import { VideoProvider } from "./providers/VideoProvider";
 
 function App() {
   return (
-    <div className="App">
+    <ConfigProvider
+      theme={{
+        token: {
+          // Seed Token
+          colorPrimary: "gray",
+          colorText: "white",
+          borderRadius: 2,
+          colorBgLayout: "#212121",
+          colorBorder: "#212121",
+
+          // Alias Token
+          colorBgContainer: "#282c34",
+        },
+      }}
+    >
       <VideoProvider>
-        <header className="App-new">
-          <Main />
-        </header>
+        <LayoutC />
       </VideoProvider>
-    </div>
+    </ConfigProvider>
   );
 }
 

@@ -26,24 +26,11 @@ const MenuComp: React.FC = () => {
 
   const getModNumber = (name: string) => name.split("-")[0];
 
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-
   const onSelect = (item: any) => {
     setSelectedVideo(item.key.toString());
   };
 
   return (
-    <div style={{ width: 256 }}>
-      <Button
-        type="primary"
-        onClick={toggleCollapsed}
-        style={{ marginBottom: 16 }}
-      >
-        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </Button>
-
       <Menu
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
@@ -53,7 +40,6 @@ const MenuComp: React.FC = () => {
         items={items}
         onClick={onSelect}
       />
-    </div>
   );
 };
 
