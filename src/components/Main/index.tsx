@@ -16,7 +16,8 @@ export default function Main() {
   useEffect(() => {
     const splitBarra = selectedVideo.split("/");
     if (splitBarra.length > 1) {
-      setVideoName(`${splitBarra[1]}`);
+      const name = splitBarra[1].replaceAll("_", " ");
+      setVideoName(name);
     }
   }, [selectedVideo]);
 
