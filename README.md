@@ -1,6 +1,11 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Video streaming app reactjs
+
+# Install with legacy!!!
+```bash
+npm install --legacy-peer-deps
+```
 
 ## Available Scripts
 
