@@ -1,35 +1,39 @@
 import { Space } from "antd";
-import { useRef } from "react";
-import ReactHlsPlayer from "react-hls-player";
+import Hls from "hls.js";
+import { useEffect, useRef } from "react";
 
 type VideoProps = {
   videoUrl: string | undefined;
 };
 export default function VideoPlayer({ videoUrl }: VideoProps) {
-  const playerRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const source = `${process.env.REACT_APP_API_VIDEO_URL}/media/${videoUrl}/stream`;
+
+  useEffect(() => {
+    if (videoRef.current && Hls.isSupported()) {
+      const hls = new Hls({
+        maxLoadingDelay: 4,
+        minAutoBitrate: 0,
+        lowLatencyMode: true,
+        xhrSetup: (xhr: any) => {
+          xhr.setRequestHeader("X-API-Key", `${process.env.REACT_APP_API_KEY}`);
+        },
+      });
+      hls.loadSource(source);
+      hls.attachMedia(videoRef.current);
+      return () => {
+        hls.destroy();
+      };
+    } else if (videoRef.current) {
+      // fallback for browsers with native HLS support
+      videoRef.current.src = source;
+    }
+  }, [source]);
+
   return (
     <div>
       <Space direction="horizontal">
-        <ReactHlsPlayer
-          playerRef={playerRef}
-          src={source}
-          autoPlay={false}
-          controls={true}
-          width="90%"
-          height="auto"
-          hlsConfig={{
-            maxLoadingDelay: 4,
-            minAutoBitrate: 0,
-            lowLatencyMode: true,
-            xhrSetup: (xhr: any) => {
-              xhr.setRequestHeader(
-                "X-API-Key",
-                `${process.env.REACT_APP_API_KEY}`
-              );
-            },
-          }}
-        />
+        <video ref={videoRef} controls width="90%" style={{ height: "auto" }} />
       </Space>
     </div>
   );
