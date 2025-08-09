@@ -44,3 +44,12 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+---
+
+## Keycloak
+
+https://blog.devgenius.io/updated-2024-react-18-2-0-and-keycloak-23-0-7-part-one-fc07f7b9e996
+
+keycloak url "https://keycloak-keycloak.5kfj6f.easypanel.host/"
