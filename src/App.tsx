@@ -1,9 +1,13 @@
 import { ConfigProvider } from "antd";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import LayoutC from "./components/LayoutC";
+import Nav from "./components/Nav";
+import PrivateRoute from "./helpers/PrivateRoute";
+import Home from "./pages/Homepage";
+import Golang from "./pages/GolangPage";
 import { VideoProvider } from "./providers/VideoProvider";
 
-function App() {
+function App(props: { keycloakInstance: Keycloak.KeycloakInstance }) {
   return (
     <ConfigProvider
       theme={{
@@ -21,7 +25,21 @@ function App() {
       }}
     >
       <VideoProvider>
-        <LayoutC />
+        <Nav />
+        {/* <LayoutC /> */}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/golang"
+              element={
+                <PrivateRoute>
+                  <Golang />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
       </VideoProvider>
     </ConfigProvider>
   );

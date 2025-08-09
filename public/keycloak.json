@@ -1,0 +1,8 @@
+{
+  "realm": "videostr",
+  "auth-server-url": "https://keycloak-keycloak.5kfj6f.easypanel.host/",
+  "ssl-required": "external",
+  "resource": "videostr",
+  "public-client": true,
+  "confidential-port": 0
+}
