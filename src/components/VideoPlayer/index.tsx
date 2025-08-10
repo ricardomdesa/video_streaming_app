@@ -1,6 +1,7 @@
 import { Space } from "antd";
 import Hls from "hls.js";
 import { useEffect, useRef } from "react";
+import KeyCloakService from "../../helpers/KeycloakService";
 
 type VideoProps = {
   videoUrl: string | undefined;
@@ -16,7 +17,7 @@ export default function VideoPlayer({ videoUrl }: VideoProps) {
         minAutoBitrate: 0,
         lowLatencyMode: true,
         xhrSetup: (xhr: any) => {
-          xhr.setRequestHeader("X-API-Key", `${process.env.REACT_APP_API_KEY}`);
+          xhr.setRequestHeader("Authorization", `Bearer ${KeyCloakService.GetAccessToken()}`);
         },
       });
       hls.loadSource(source);

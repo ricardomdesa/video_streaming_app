@@ -1,9 +1,7 @@
-import React from "react";
 import KeyCloakService from "../helpers/KeycloakService";
 
 const Nav = () => {
  
-
  return (
    <div>
      <div className="top-0 w-full flex flex-wrap">

@@ -30,6 +30,7 @@ const Login = (onAuthenticatedCallback: Function) => {
 
 const UserName = () => keycloakInstance.tokenParsed?.preferred_username;
 const UserRoles = () => keycloakInstance.tokenParsed?.realm_access?.roles;
+const GetAccessToken = () => keycloakInstance.token;
 
 const GetInstance = () => keycloakInstance;
 
@@ -38,6 +39,7 @@ const KeyCloakService = {
   GetUserName: UserName,
   GetUserRoles: UserRoles,
   GetInstance: GetInstance,
+  GetAccessToken: GetAccessToken,
 };
 
 export default KeyCloakService;

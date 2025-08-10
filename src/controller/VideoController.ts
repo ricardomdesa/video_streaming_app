@@ -1,6 +1,7 @@
 import { GetModulosDTO } from "../domain/dtos/modulos";
 import { GetModulosResponse } from "../domain/requests";
 import { api } from "../external_interface/api";
+import KeyCloakService from "../helpers/KeycloakService";
 
 export class VideoController {
   public static async getClasses() {
@@ -8,7 +9,7 @@ export class VideoController {
       `${process.env.REACT_APP_API_VIDEO_URL}/classes`,
       {
         method: "GET",
-        headers: { "X-API-Key": `${process.env.REACT_APP_API_KEY}` },
+        headers: { "Authorization": `Bearer ${KeyCloakService.GetAccessToken()}` },
       }
     );
     const response = await api(request);
